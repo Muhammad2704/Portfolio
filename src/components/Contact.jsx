@@ -76,12 +76,6 @@ const ContactSection = () => {
                             </a>
                         </div>
 
-                        {/* Phone */}
-                        <div className="hidden md:block">
-                            <p className="text-gray-400 text-sm mb-2">Phone:</p>
-                            <p className="text-xl tracking-wide">{import.meta.env.VITE_PHONE_NUMBER || '+91 99470 93066'}</p>
-                        </div>
-
                         {/* Follow / Connect */}
                         <div className="mt-4 flex flex-col items-center md:items-start">
                             <p className="text-gray-400 text-sm mb-4">Connect with me</p>
@@ -140,26 +134,15 @@ const ContactSection = () => {
                             </div>
                         </div>
 
-                        {/* Phone and Subject Row */}
-                        <div className="flex flex-col md:flex-row gap-4 w-full">
-                            <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                                <label className="text-xs text-gray-400 font-medium">Phone</label>
-                                <input 
-                                    type="tel" 
-                                    name="phone"
-                                    placeholder="Your phone number" 
-                                    className="w-full bg-[#111] text-white text-sm rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all placeholder:text-gray-600 border border-transparent"
-                                />
-                            </div>
-                            <div className="flex flex-col gap-1.5 w-full md:w-1/2">
-                                <label className="text-xs text-gray-400 font-medium">Subject</label>
-                                <input 
-                                    type="text" 
-                                    name="subject"
-                                    placeholder="Subject" 
-                                    className="w-full bg-[#111] text-white text-sm rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all placeholder:text-gray-600 border border-transparent"
-                                />
-                            </div>
+                        {/* Subject */}
+                        <div className="flex flex-col gap-1.5 w-full">
+                            <label className="text-xs text-gray-400 font-medium">Subject</label>
+                            <input 
+                                type="text" 
+                                name="subject"
+                                placeholder="Subject" 
+                                className="w-full bg-[#111] text-white text-sm rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all placeholder:text-gray-600 border border-transparent"
+                            />
                         </div>
 
                         {/* Message */}
