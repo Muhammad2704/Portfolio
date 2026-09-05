@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+// Helper function to dynamically import assets in Vite
+const getAssetUrl = (path) => {
+  return new URL(`../assets/project/${path}`, import.meta.url).href;
+};
+
 const projects = [
   {
     name: 'Business Analytics Suite',
@@ -12,14 +17,14 @@ const projects = [
     description: "An interactive e-commerce and retail analytics platform that unifies executive KPIs, product performance, sales forecasting, customer RFM segmentation, and discount impact analysis to optimize profit margins and drive growth strategies.",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
     screenshots: [
-      "src/assets/project/executive overview.png",
-      "src/assets/project/sales analysis.png",
-      "src/assets/project/product & profitability analysis.png",
-      "src/assets/project/customer analysis.png",
-      "src/assets/project/rfm customer segmentation.png",
-      "src/assets/project/discount and profitability analysis.png",
-      "src/assets/project/sales forcast & trends.png",
-      "src/assets/project/slicers.png"
+      getAssetUrl("executive overview.png"),
+      getAssetUrl("sales analysis.png"),
+      getAssetUrl("product & profitability analysis.png"),
+      getAssetUrl("customer analysis.png"),
+      getAssetUrl("rfm customer segmentation.png"),
+      getAssetUrl("discount and profitability analysis.png"),
+      getAssetUrl("sales forcast & trends.png"),
+      getAssetUrl("slicers.png")
     ],
     githubUrl: "https://github.com/Muhammad2704/retail-analytics",
     linkedinUrl: "https://lnkd.in/p/dM6pRXBi"
@@ -35,13 +40,13 @@ const projects = [
     description: "An interactive healthcare intelligence dashboard suite that visualises multi-branch hospital operations, clinical performance, and financial metrics to help healthcare administrators streamline patient management and optimize resource allocation.",
     thumbnail: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=2000&auto=format&fit=crop",
     screenshots: [
-      "src/assets/project/executive.png",
-      "src/assets/project/patient.png",
-      "src/assets/project/doctor.png",
-      "src/assets/project/department.png",
-      "src/assets/project/financial.png",
-      "src/assets/project/hospital.png",
-      "src/assets/project/Screenshot 2026-07-23 154226.png"
+      getAssetUrl("executive.png"),
+      getAssetUrl("patient.png"),
+      getAssetUrl("doctor.png"),
+      getAssetUrl("department.png"),
+      getAssetUrl("financial.png"),
+      getAssetUrl("hospital.png"),
+      getAssetUrl("Screenshot 2026-07-23 154226.png")
     ],
     githubUrl: "https://github.com/Muhammad2704/Healthcare_Analytics",
     linkedinUrl: "https://lnkd.in/p/dsE3A9WT"
@@ -57,9 +62,9 @@ const projects = [
     description: "A futuristic glassmorphism-styled business intelligence suite that tracks global revenue, profit margins, and customer demographics across categories and regions to provide executive-level visibility into retail growth metrics.",
     thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
     screenshots: [
-      "src/assets/project/sales (2).png",
-      "src/assets/project/profit.png",
-      "src/assets/project/demographics.png"
+      getAssetUrl("sales (2).png"),
+      getAssetUrl("profit.png"),
+      getAssetUrl("demographics.png")
     ],
     githubUrl: "https://github.com/",
     linkedinUrl: "https://lnkd.in/p/dG2PFg3B"
@@ -75,8 +80,8 @@ const projects = [
     description: "An interactive retail analytics dashboard that tracks $1.6M in sales, monitors YoY monthly revenue and profit trends, breaking down performance by payment mode, region, and category, alongside a 15-day predictive sales forecast model.",
     thumbnail: "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=2000&auto=format&fit=crop",
     screenshots: [
-      "src/assets/project/sales.png",
-      "src/assets/project/forecast.png"
+      getAssetUrl("sales.png"),
+      getAssetUrl("forecast.png")
     ],
     githubUrl: "https://github.com/",
     linkedinUrl: "https://lnkd.in/p/dgs9d8RG"
@@ -92,7 +97,7 @@ const projects = [
     description: "An interactive Excel-based sales dashboard tracking ₹25.66M in total revenue and 32.5% profit margin, enabling commercial leaders to analyze revenue-profit trends, regional city performance, top product rankings, and sales representative output across multi-year periods.",
     thumbnail: "https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=2000&auto=format&fit=crop",
     screenshots: [
-      "src/assets/project/excel dashboard.png"
+      getAssetUrl("excel dashboard.png")
     ],
     githubUrl: "https://github.com/",
     linkedinUrl: "https://lnkd.in/p/dAQHzN-8"
@@ -156,7 +161,7 @@ const Project = () => {
           return (
             <div key={proj.name} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 lg:gap-16 w-full group`}>
 
-              {/* Clean Single Thumbnail Display */}
+              {/* Single Thumbnail Display */}
               <div 
                 onClick={() => openScreenshotModal(proj)}
                 className="w-full lg:w-6/12 overflow-hidden relative aspect-16/10 bg-[#111] rounded-sm cursor-pointer border border-white/10 group-hover:border-[#ccff00]/50 transition-colors"
@@ -222,7 +227,7 @@ const Project = () => {
         })}
       </div>
 
-      {/* Header "Read More" Modal */}
+      {/* Header Modal */}
       {showHeaderDetails && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-6">
           <div className="relative max-w-2xl w-full bg-[#111] border border-white/20 rounded-lg p-8 text-white">
@@ -243,7 +248,7 @@ const Project = () => {
         </div>
       )}
 
-      {/* Screenshot Lightbox Modal with Arrows and Thumbnail Selector */}
+      {/* Screenshot Modal */}
       {activeProjectModal && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8">
           <div className="relative max-w-5xl w-full bg-[#111] rounded-lg overflow-hidden border border-white/20 shadow-2xl flex flex-col">
@@ -261,10 +266,8 @@ const Project = () => {
               </button>
             </div>
 
-            {/* Main Screenshot Container with Navigation Arrows */}
+            {/* Main Screenshot Container */}
             <div className="p-4 bg-[#050505] flex items-center justify-between min-h-[50vh] max-h-[68vh] relative">
-              
-              {/* Previous Arrow */}
               {activeProjectModal.screenshots.length > 1 && (
                 <button 
                   onClick={prevScreenshot}
@@ -279,11 +282,10 @@ const Project = () => {
                 <img 
                   src={activeProjectModal.screenshots[currentScreenshotIndex]} 
                   alt={`${activeProjectModal.name} screenshot ${currentScreenshotIndex + 1}`} 
-                  className="max-h-[60vh] w-auto object-contain rounded"
+                  className="max-h-[60vh] w-auto max-w-full object-contain rounded"
                 />
               </div>
 
-              {/* Next Arrow */}
               {activeProjectModal.screenshots.length > 1 && (
                 <button 
                   onClick={nextScreenshot}
@@ -292,7 +294,6 @@ const Project = () => {
                   ❯
                 </button>
               )}
-
             </div>
 
             {/* Bottom Screenshot Thumbnails */}
@@ -302,7 +303,7 @@ const Project = () => {
                   <button
                     key={sIdx}
                     onClick={() => setCurrentScreenshotIndex(sIdx)}
-                    className={`w-20 h-12 rounded border overflow-hidden transition-all cursor-pointer ${
+                    className={`w-20 h-12 shrink-0 rounded border overflow-hidden transition-all cursor-pointer ${
                       currentScreenshotIndex === sIdx 
                         ? 'border-[#ccff00] scale-105 opacity-100' 
                         : 'border-white/20 opacity-40 hover:opacity-100'
